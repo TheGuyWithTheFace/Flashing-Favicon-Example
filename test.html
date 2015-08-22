@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link id="favicon" type="image/x-icon" rel="shortcut icon" href="images/triton.ico"/>
+    </head>
+    <body>
+        <h1>TEST</h1>
+        <p>Look ma, the favicon on the tab bar is flashing!
+        (Press the stop button once it gets on your nerves)</p>
+        <input id="stopButton" type="button" value="STOP" onClick="stopIcon();" />
+
+        <script>
+        icon = document.getElementById("favicon");
+
+        var id = window.setInterval(function() {
+            icon.href = "images/favicon_flash.ico";
+            setTimeout(function() {
+                icon.href="images/triton.ico";
+            }, 1000);
+        }, 2000);
+
+        var stopIcon = function() {
+            console.log("stopping");
+            window.clearInterval(id);
+        };
+        </script>
+    </body>
+</html>

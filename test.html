@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link id="favicon" type="image/x-icon" rel="shortcut icon" href="images/triton.ico"/>
+        <link id="favicon" type="image/x-icon" rel="shortcut icon" href="images/original.ico"/>
     </head>
     <body>
         <h1>TEST</h1>
         <p>Look ma, the favicon on the tab bar is flashing!
-        (Press the stop button once it gets on your nerves)</p>
+        (Press the stop button to end the flashing)</p>
+
+        <!-- It's not necessary to stop the flashing with a button, this is just an example. -->
         <input id="stopButton" type="button" value="STOP" onClick="stopIcon();" />
 
         <script>
         icon = document.getElementById("favicon");
 
+        // Set icon to a different image, then switch back after a second.
+        // Repeat every 2 seconds until clearInterval is called.
         var id = window.setInterval(function() {
-            icon.href = "images/favicon_flash.ico";
+            icon.href = "images/flash.ico";
+
             setTimeout(function() {
-                icon.href="images/triton.ico";
+                icon.href="images/original.ico";
             }, 1000);
         }, 2000);
 
         var stopIcon = function() {
             console.log("stopping");
+            // As long as the id from setInterval was stored, this will stop
+            // the flashing at any time.
             window.clearInterval(id);
         };
         </script>
